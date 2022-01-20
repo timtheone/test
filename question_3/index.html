@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color the box</title>
+    <style>
+        #color-box {
+            transition: 1s background-color;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Color the box</h1>
+    <div id="color-box"></div>
+    <script>
+        const paintBox = (element, color) => {
+            element.style.backgroundColor = color;
+        }
+
+        const changeColorAfter = (delay, color) => {
+            let colorBox = document.querySelector('#color-box');
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(paintBox(colorBox, color));
+                }, delay)
+            })
+        }
+
+        async function updateColors() {
+            await changeColorAfter(1000, 'red');
+            await changeColorAfter(2000, 'orange');
+            await changeColorAfter(3000, 'yellow');
+            await changeColorAfter(1000, 'green');
+            await changeColorAfter(4000, 'blue');
+            await changeColorAfter(5000, 'indigo');
+        }
+
+        updateColors();
+    </script>
+</body>
+
+</html>
